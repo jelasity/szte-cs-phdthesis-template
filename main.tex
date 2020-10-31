@@ -1,0 +1,206 @@
+\documentclass[12pt,a4paper,twoside]{book}
+\usepackage[utf8]{inputenc}
+%\usepackage[T1]{fontenc}
+\usepackage{setspace}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{cite}
+\usepackage{algorithm,algpseudocode}
+\usepackage{setspace}
+\usepackage{bibentry}
+\usepackage[bottom]{footmisc}
+\usepackage[
+a4paper,
+twoside,
+bindingoffset=1cm,
+inner=2.5cm,
+%outer=2.5cm,
+outer=2cm,
+top=3.5cm,
+%top=3.5cm
+bottom=3.5cm,
+%headsep=1.2cm
+headsep=1cm
+]{geometry}
+%\usepackage{geometry}
+%\geometry{a4paper,twoside,textwidth=6.0in,textheight=8.5in}
+\usepackage{charter}
+\usepackage[sort,numbers]{natbib}
+%\usepackage{nyul_thesis}
+\usepackage{booktabs,caption,multicol,hhline,tikz,multirow,array}
+\usetikzlibrary{arrows.meta}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{url}
+\usepackage{subcaption}
+\usepackage{caption}
+\usepackage{graphicx, multirow, array,amsmath}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage[acronym, nopostdot]{glossaries}
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+% \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{N}{@{}m{0pt}@{}}
+\setlength{\belowcaptionskip}{10pt plus 3pt minus 2pt}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{%
+	\fancyhead{}%
+	\renewcommand{\headrulewidth}{0pt}%
+	\renewcommand{\footrulewidth}{0pt}%
+	\fancyfoot[C]{\bfseries\thepage}}
+\fancypagestyle{mainmatter}{%
+	\fancyhf{}
+	\renewcommand{\headrulewidth}{0.4pt}%
+	\renewcommand{\footrulewidth}{0pt}%
+	\fancyhead[LE,RO]{\bfseries\thepage}
+	\fancyhead[LO]{\bfseries\nouppercase\rightmark}
+	\fancyhead[RE]{\bfseries\nouppercase\leftmark}}
+\fancypagestyle{frontmatter}{%
+	\fancyhead{}%
+	\renewcommand{\headrulewidth}{0pt}%
+	\renewcommand{\footrulewidth}{0pt}%
+	\fancyfoot[C]{\bfseries\thepage}}
+
+\captionsetup[figure]{labelfont={bf},textfont={it}}
+\captionsetup[table]{labelfont={bf},textfont={it}}
+
+
+%----------------------------------------------------------------------------------------
+%	THESIS INFORMATION
+%----------------------------------------------------------------------------------------
+
+\makeglossaries
+
+\begin{document}
+%\UseRawInputEncoding
+
+\setstretch{1.1}
+
+\nobibliography*
+\newcounter{cont}
+
+% Title
+\include{titlepage}
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
+% \newpage
+% \thispagestyle{empty}
+% \begin{flushright}
+% \parbox[t]{10cm}{\textit{"Scientists study the world as it is,}\\ \textit{\hphantom{"}engineers  create the world that never has been."}} \\
+% \vspace{1em}
+% \parbox[t]{5cm}{\small(Kármán Tódor)}
+% \end{flushright}
+
+% \newpage
+% \thispagestyle{empty}
+% \mbox{}
+
+\frontmatter
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\pagestyle{frontmatter}
+
+\tableofcontents
+
+% Empty pages
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
+% \newpage
+% \thispagestyle{empty}
+% \mbox{}
+
+% Main
+
+\mainmatter
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\pagestyle{mainmatter}
+
+% List of Figures
+\listoffigures
+% List of Tables
+\listoftables
+
+% List of Acronyms
+\newacronym{gcd}{GCD}{Greatest Common Divisor}
+\newacronym{lcm}{LCM}{Least Common Multiple}
+
+% Acronym List
+\printglossary[type=\acronymtype, title=Abbreviations]
+
+% Intro:
+\include{Chapters/intro_section}
+
+\section{Examples}
+
+% Acronym examples
+Given a set of numbers, there are elementary methods to compute 
+its \acrlong{gcd}, which is abbreviated \acrshort{gcd}. This process 
+is similar to that used for the \acrfull{lcm}.
+
+% Figure example:
+Examples of figure:
+\begin{figure}[h]
+\caption{Example of figure}
+\centering
+\includegraphics[width=0.3\linewidth]{Figures/szte_logo}
+\end{figure}
+
+% Table example:
+Examples of table:
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\#    & Col 1 & Col2 \\ \hline
+Row 1 & 0     & 1    \\ \hline
+Row 2 & 2     & 3    \\ \hline
+\end{tabular}
+\caption{Example of table}
+\label{main:table_1}
+\end{table}
+
+Example of equations:
+% Equations example
+\begin{equation}
+    x_{test} = b^2 + c^2
+\end{equation}
+
+% Thesis:
+\include{Chapters/Thesis1/chapter_2} 
+\include{Chapters/Thesis2/chapter_3}
+\include{Chapters/Thesis3/chapter_4}
+% References:
+\include{Chapters/references}
+
+\backmatter
+
+% Bibliography:
+\bibliographystyle{plain}
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{refs}
+
+% Summary
+\include{Chapters/summaries}
+\include{Chapters/osszefoglalok}
+\include{Chapters/my_publications}
+
+% Acknowledgement
+\include{ack}
+
+% Empty page
+\thispagestyle{empty}
+
+\end{document}  
