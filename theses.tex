@@ -14,6 +14,7 @@ bottom=3cm,
 headsep=1.2cm
 ]{geometry}
 \usepackage[sort,numbers]{natbib}
+\usepackage{etoolbox}
 \usepackage{bibentry}
 % \usepackage{nyul_thesis}
 \usepackage{graphicx}
@@ -22,7 +23,7 @@ headsep=1.2cm
 \usepackage{hyperref}
 \usepackage{enumitem}
 \usepackage{float}
-%\usepackage[euler]{textgreek}
+\usepackage[euler]{textgreek}
 
 \pagestyle{plain}
 
@@ -33,7 +34,7 @@ headsep=1.2cm
 
 \nobibliography*
 
-\include{booklet_titlepage}
+\include{titlepage}
  
 \newpage
 \thispagestyle{empty}
@@ -46,7 +47,7 @@ headsep=1.2cm
 \newpage
 \section{Introduction}
 
-Brief introduction to the topic. 
+Brief introduction to the topic \cite{b:arrl}. 
 
 Problem statement and motivation.
 
@@ -57,7 +58,7 @@ The dissertation consists of N major parts. The first chapter presents ..., the 
 % INFO: The number of thesis groups can vary based on the major parts of the dissertation.
 \section{Title of first thesis group}
 
-Brief introduction to the thesis group.
+Brief introduction to the thesis group \cite{b:duckworth99}.
 
 Problem statement, challenges and motivation.
 
@@ -114,7 +115,7 @@ Main results and significance of the work.
 
 \section{Title of the second thesis group}
 
-Brief introduction to the thesis group.
+Brief introduction to the thesis group \cite{b:mays01}.
 
 Problem statement, challenges and motivation.
 
@@ -130,7 +131,7 @@ In Chapter X. of the PhD thesis, a(n) ... is presented.
 %     \label{figure_label}
 % \end{figure}
 
-Brief introduction to the topic 1-2 sentence.
+Brief introduction to the topic 1-2 sentence \cite{b:isis-floodrouting}.
 
 Details of the work.
 
@@ -170,7 +171,7 @@ Main results and significance of the work.
 
 \section{Title of the third thesis group}
 
-Brief introduction to the thesis group.
+Brief introduction to the thesis group \cite{b:isis-tracking-techreport}.
 
 Problem statement, challenges and motivation.
 
@@ -370,6 +371,19 @@ Table~\ref{tab:summary_table} summarizes the relation between the thesis points 
 \newblock In \emph{The Xth International Workshop on Something}, publisher, page-page, year.
 
 \end{enumerate}
+
+\vspace*{1em}
+
+\bibliographystyle{plain}
+\renewcommand{\refname}{\large Other References }
+ 
+% Make the numbering start from the end of the manual publication list 
+\makeatletter
+\apptocmd{\thebibliography}{\global\c@NAT@ctr 10\relax}{}{}
+\makeatother
+
+\bibliography{refs}
+
 
 \newpage
 
